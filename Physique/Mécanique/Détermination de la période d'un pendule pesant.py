@@ -27,6 +27,6 @@ print(valeur_integral)
 print(periode)
 
 #Erreur:
-#line 42, in f
+#line 14, in f
 #    return 1/(m.sqrt(2*m*g*a*(m.cos(x)-m.cos(theta0))/J))
 #AttributeError: 'float' object has no attribute 'sqrt'
