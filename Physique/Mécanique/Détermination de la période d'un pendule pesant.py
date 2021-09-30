@@ -7,9 +7,11 @@ g = 9.81
 l = 50*(10**-3) #50cm
 a = 25*(10**-3) #25cm, le milieu de la tige de 50cm
 J = (1/3)*m1*(l**2)
+T0 = (2*m.pi)*m.sqrt(J/(m1*g*a))
 
 theta0 = np.linspace(0.1, m.pi, 1000)
 periode = []
+rapport = []
 debut = 0
 
 def f(x, theta0):
@@ -25,11 +27,15 @@ def integral(f, a, b, n):
 periode = []
 
 for elt in theta0:
-    periode.append(4*integral(f, debut, elt, 1000))
+    T = 4*integral(f, debut, elt, 1000)
+    periode.append(T)
+    rapport.append(T/T0)
 
-plt.plot(theta0, periode)
-plt.xlabel("Théta 0 (rad)")
-plt.ylabel("Période (s)")
-plt.title("Période d'un pendule pesant en fonction de théta 0")
-plt.grid()
+fig, axs = plt.subplots(2)
+fig.suptitle("Etude de la période d'un pendule pesant")
+axs[0].plot(theta0, periode)
+axs[0].set(xlabel='Théta 0 (rad)', ylabel='Période (s)')
+axs[1].plot(theta0, rapport)
+axs[1].set(xlabel='Théta 0 (rad)', ylabel='Rapport T0/T')
+
 plt.show()
