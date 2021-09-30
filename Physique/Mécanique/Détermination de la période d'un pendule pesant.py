@@ -26,7 +26,6 @@ periode = []
 
 for elt in theta0:
     periode.append(4*integral(f, debut, elt, 1000))
-    print(elt)
 
 plt.plot(theta0, periode)
 plt.xlabel("Théta 0 (rad)")
